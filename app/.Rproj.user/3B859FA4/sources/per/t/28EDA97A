@@ -1,0 +1,27 @@
+{
+    "id": "28EDA97A",
+    "path": "C:/Users/USER/OneDrive/Desktop/data analysis/R/Acess/app/delete.R",
+    "project_path": "delete.R",
+    "type": "r_source",
+    "hash": "1598405139",
+    "contents": "",
+    "dirty": false,
+    "created": 1711808973853.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "tempName": "Untitled2",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "287,4",
+        "scrollLine": "0"
+    },
+    "folds": "75|32|87|2|\n90|35|92|2|\n100|30|213|2|\n216|30|239|2|\n242|37|251|2|\n268|39|274|2|\n276|33|287|2|\n290|29|294|2|\n",
+    "lastKnownWriteTime": 1711894168,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1711894168947,
+    "read_only": false,
+    "read_only_alternatives": []
+}

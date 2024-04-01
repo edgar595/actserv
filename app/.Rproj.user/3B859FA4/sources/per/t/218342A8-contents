@@ -1,0 +1,52 @@
+library(shiny)
+library(data.table)
+
+# Sample user data
+user_data <- fread("user_data.csv")
+
+ui <- fluidPage(
+  navbarPage(
+    title = tags$span(icon("cog"), "Admin"),
+    tabPanel(
+      title = tags$span(icon("cog"), "Admin"),
+      fluidRow(
+        dataTableOutput("user_table"),
+        column(3, selectInput("user_to_enable", "Select User to Enable", choices = user_data$user[user_data$Status == "Disabled"])),
+        column(3, actionButton("enable_button", "Enable Selected User"))
+      )
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  # Render user table
+  output$user_table <- renderDataTable({
+    user_data
+  })
+  
+  # Enable selected user
+  observeEvent(input$enable_button, {
+    selected_user <- input$user_to_enable
+    
+    # Update user status in the user_data dataframe
+    user_data$Status[user_data$user == selected_user] <- "Active"
+    
+    # Save updated user data
+    fwrite(user_data, "user_data.csv")
+    
+    # Re-read the updated user data
+    user_data <- fread("user_data.csv")
+    
+    # Update choices for selectInput
+    disabled_users <- user_data$user[user_data$Status == "Disabled"]
+    updateSelectInput(session, "user_to_enable", choices = disabled_users)
+    
+    # Update table
+    output$user_table <- renderDataTable({
+      user_data
+    })
+  })
+}
+
+
+shinyApp(ui, server)
